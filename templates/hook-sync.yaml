@@ -16,7 +16,7 @@ spec:
       restartPolicy: Never
       containers:
         - name: post-sync-job
-          image: "alpine:3.3"
+          image: alpine:edge
           command: ["/bin/sleep","20"]
           securityContext:
               runAsUser: 1000
