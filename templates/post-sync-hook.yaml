@@ -1,0 +1,24 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  generateName: sync-hook-
+  annotations:
+    argocd.argoproj.io/hook: PostSync
+spec:
+  template:
+    metadata:
+      name: sync-hook
+    spec:
+      securityContext:
+        runAsUser: 1000
+        runAsGroup: 1000
+        runAsNonRoot:  true
+      restartPolicy: Never
+      containers:
+        - name: post-sync-job
+          image: "alpine:3.3"
+          command: ["/bin/sleep","20"]
+          securityContext:
+              runAsUser: 1000
+              runAsGroup: 1000
+              runAsNonRoot:  true
