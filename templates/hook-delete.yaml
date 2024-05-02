@@ -1,13 +1,14 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-  generateName: test-hook-
+  name: {{ .Release.Name }}-post-delete
   annotations:
     argocd.argoproj.io/hook: PostDelete
+    argocd.argoproj.io/hook-delete-policy: BeforeHookCreation
 spec:
   template:
     metadata:
-      name: test-hook
+      name: delete-hook
     spec:
       securityContext:
         runAsUser: 1000
