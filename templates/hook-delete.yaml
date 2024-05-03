@@ -4,7 +4,7 @@ metadata:
   name: {{ .Release.Name }}-post-delete
   annotations:
     argocd.argoproj.io/hook: PostDelete
-    argocd.argoproj.io/hook-delete-policy: BeforeHookCreation
+    argocd.argoproj.io/hook-delete-policy: BeforeHookCreation,HookSucceeded
 spec:
   template:
     metadata:
